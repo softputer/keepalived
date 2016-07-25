@@ -23,7 +23,8 @@ RUN sed -i "s:. /etc/rc.d/init.d/functions:. /lib/lsb/init-functions:"  /etc/ini
 COPY ./templates/keepalived_template.cfg  /etc/keepalived/
 COPY ./scripts/master.sh /etc/keepalived/
 COPY ./keepalived  /
-RUN /keepalived
+RUN chmod +x /etc/keepalived/master.sh && \
+    /keepalived
 
 
 CMD ["service", "keepalived", "start"] 
