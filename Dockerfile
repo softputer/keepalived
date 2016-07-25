@@ -20,4 +20,10 @@ RUN sed -i "s:. /etc/rc.d/init.d/functions:. /lib/lsb/init-functions:"  /etc/ini
     sed -i "s:. /etc/sysconfig/keepalived:. /etc/keepalived:"  /etc/init.d/keepalived && \
     sed -i "s:daemon keepalived ${KEEPALIVED_OPTIONS}:daemon keepalived start:"  /etc/init.d/keepalived
 
+COPY ./templates/keepalived_template.cfg  /etc/keepalived/
+COPY ./scripts/master.sh /etc/keepalived/
+COPY ./keepalived  /
+RUN /keepalived
+
+
 CMD ["service", "keepalived", "start"] 
