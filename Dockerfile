@@ -6,9 +6,9 @@ ENV KEEPALIVED_VERSION=1.2.19
 
 RUN apt-get update && \
     apt-get install -y libssl-dev openssl libpopt-dev make gcc daemon wget && \
-    wget http://www.keepalived.org/software/keepalived-1.2.19.tar.gz && \
-    tar -zxvf keepalived-1.2.19.tar.gz && \
-    cd keepalived-1.2.19/ && \
+    wget http://www.keepalived.org/software/keepalived-${KEEPALIVED_VERSION}.tar.gz && \
+    tar -zxvf keepalived-${KEEPALIVED_VERSION}.tar.gz && \
+    cd keepalived-${KEEPALIVED_VERSION}/ && \
     ./configure --prefix=/ && \
     make && make install && \
     cp /etc/rc.d/init.d/keepalived /etc/init.d && \
