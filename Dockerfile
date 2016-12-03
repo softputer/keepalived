@@ -20,6 +20,6 @@ RUN sed -i "s:. /etc/sysconfig/keepalived:. /etc/keepalived:"  /etc/init.d/keepa
 
 COPY ./templates/keepalived_template.cfg  /etc/keepalived/
 COPY ./keepalived  /
-RUN  bash /keepalived
+RUN  /keepalived
 
 CMD ["service", "keepalived", "start"] 
